@@ -223,7 +223,12 @@ body {
     width: 750px;
     }
   
-  
+    .container2 {
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 100px;
+      padding-right: 100px;
+    }
 
 
   .form-group {
