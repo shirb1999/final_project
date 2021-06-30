@@ -36,7 +36,7 @@ function addArtist() {
             processData: false,
             encode: true,
             success: function(data, textStatus, jQxhr) {
-                location.reload();
+                window.location.href="home";
             },
             error: function(jqXhr, textStatus, errorThrown) {
                 alert("failed to add user");
@@ -46,19 +46,9 @@ function addArtist() {
     });
 }
 
-function CheckPassword(inputtxt) 
+function sendMail() 
 { 
-    var passw=  /^[A-Za-z]\w{7,14}$/;
-    if(inputtxt.value.match(passw)) 
-    { 
-        alert('Correct, try another...')
-        return true;
-    }
-    else
-    { 
-        alert('Wrong...!')
-            return false;
-}
+    console.log("hy send mail")
 }
 
 function ViewSong(id) {

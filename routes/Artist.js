@@ -21,22 +21,24 @@ module.exports = {
             usernam += req.params.id[i];
             i++
         }
-        Artist.findOne({ id: id_user },{name: usernam})
+        
+        Artist.findOne({ id: id_user },{name:usernam })
             .then(artist => res.send(artist.email))
             .catch(e => res.status(500).send(e))
     }, 
     user_login: function(req, res) {
         var password_user = "";
-        var usernam = "";
+        var id_user = "";
         let i = 0;
         for( ; i<8 ;i++)
             password_user+= req.params.password[i];
-        
+
         while(i<req.params.password.length){
-            usernam += req.params.password[i];
+            id_user += req.params.password[i];
             i++
         }
-        Artist.findOne({ password: password_user },{name: usernam})
+        console.log(id_user)
+        Artist.findOne({  id: id_user })
             .then(artist => res.send(artist.password))
             .catch(e => res.status(500).send(e))
     }, 

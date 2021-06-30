@@ -37,7 +37,15 @@ app.use('/js', express.static(path.join(__dirname, 'js')));
 
 app.use('/css', express.static(path.join(__dirname, 'css')));
 
-app.use('/home', express.static(path.join(__dirname, 'Screens/HomeScreen.html')));
+app.use('/addUser', express.static(path.join(__dirname, 'Screens/HomeScreen.html')));
+
+app.use('/faqs', express.static(path.join(__dirname, 'Screens/faqs.html')));
+
+app.use('/contact_us', express.static(path.join(__dirname, 'Screens/contact_us.html')));
+
+app.use('/about_us', express.static(path.join(__dirname, 'Screens/about_us.html')));
+
+app.use('/home', express.static(path.join(__dirname, 'Screens/home.html')));
 
 app.use('/forget', express.static(path.join(__dirname, 'Screens/forget_password.html')));
 

@@ -63,3 +63,6 @@ table, tr, td {
 img{
     width: 200px;
 }
+p {
+    color: rgb(255, 0, 13);
+  }

@@ -26,11 +26,11 @@ $(document).ready(function () {
             type: "GET", // define the type of HTTP verb we want to use ("GET" for our form)
             url: 'http://localhost:3001/users/' + $("#id_field").val() + $("#username").val(), // the url where we want to POST
             success: function( data, textStatus, jQxhr ){
-                console.log("forget password"); 
+                console.log(data); 
                    
             },
             error: function(errorThrown) {
-                alert("User does not exist");
+              document.getElementById("demo").innerHTML = "One or more of the details are incorrect"
 
             }
         })
