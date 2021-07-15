@@ -8,8 +8,8 @@ $('#exampleModal').on('show.bs.modal', function(event) {
     modal.find('.modal-body input').val(recipient)
 })
 
-function addArtist() {
-    $("form[name='Add_Artist_Form']").validate({
+function addUser() {
+    $("form[name='Add_User_Form']").validate({
         rules: {
             name: {
                 required: true,
@@ -18,15 +18,15 @@ function addArtist() {
         },
         messages: {},
     });
-    $("#Add_Artist_Form").submit(function(event) {
-        if (!$("#Add_Artist_Form").valid()) return;
+    $("#Add_User_Form").submit(function(event) {
+        if (!$("#Add_User_Form").valid()) return;
         $.ajax({
             type: "POST",
-            url: "http://localhost:3001/Artist",
+            url: "http://localhost:3001/User",
             contentType: "application/json",
             data: JSON.stringify({
-                name: $("#artist_name").val(),
-                id: $("#artist_id").val(),
+                name: $("#user_name").val(),
+                id: $("#user_id").val(),
                 birth_year: $("#birth_year").val(),
                 password: $("#password").val(),
                 rpassword: $("#rpassword").val(),
@@ -46,15 +46,10 @@ function addArtist() {
     });
 }
 
-function sendMail() 
-{ 
-    console.log("hy send mail")
-}
-
 function ViewSong(id) {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:3001/Artist/' + id,
+        url: 'http://localhost:3001/User/' + id,
         success: function(data) {
             let Table = `<table id=Songs class="table" style="width:100%">
                     <thead  class="thead-dark">
@@ -65,7 +60,7 @@ function ViewSong(id) {
                 Table +=
                     `<tr>
                         <th scope="col">${data[index]}</th>
-                        <td ><button type="button" class="btn btn-outline-primary" onClick="deleteArtistSong(${id},${index})"> Delete Song</button></td>
+                        <td ><button type="button" class="btn btn-outline-primary" onClick="deleteUserSong(${id},${index})"> Delete Song</button></td>
                     </tr>`;
             });
             Table += ` </tbody></table>`;
@@ -73,7 +68,7 @@ function ViewSong(id) {
             $("#ViewSongs").replaceWith(`<div id="ViewSongs">${Table}</div>`);
         },
         error: function(errorThrown) {
-            alert("failed to view Songs in this artist");
+            alert("failed to view Songs in this user");
 
         }
     })
@@ -82,7 +77,7 @@ function ViewSong(id) {
 }
 
 
-function addArtistSong(id) {
+function addUserSong(id) {
     $("form[name='Add_Song_Form']").validate({
         rules: {
             name: {
@@ -96,7 +91,7 @@ function addArtistSong(id) {
         if (!$("#Add_Song_Form").valid()) return;
         $.ajax({
             type: "POST",
-            url: "http://localhost:3001/Artist/" + id,
+            url: "http://localhost:3001/User/" + id,
             contentType: "application/json",
             data: JSON.stringify({
                 name: $("#name_song").val()
@@ -116,25 +111,25 @@ function addArtistSong(id) {
 }
 
 
-function deleteArtist(id) {
-    if (confirm("Are you sure you want to delete this artist?")) {
+function deleteUser(id) {
+    if (confirm("Are you sure you want to delete this user?")) {
         $.ajax({
-            url: "http://localhost:3001/Artist/" + id,
+            url: "http://localhost:3001/User/" + id,
             type: "DELETE",
             success: function(data) {
                 location.reload();
             },
             error: function() {
-                alert("failed to delete artist");
+                alert("failed to delete user");
             }
         })
     }
 }
 
-function deleteArtistSong(id, name_song) {
+function deleteUserSong(id, name_song) {
     console.log("id: "+id);
     console.log("id song "+name_song);
-    if (confirm("Are you sure you want to delete this artist?")) {
+    if (confirm("Are you sure you want to delete this user?")) {
         $.ajax({
             url: "http://localhost:3001/Song/" + id + name_song,
             type: "DELETE",
@@ -143,70 +138,10 @@ function deleteArtistSong(id, name_song) {
                 location.reload();
             },
             error: function() {
-                alert("failed to delete artist song");
+                alert("failed to delete user song");
             }
         })
     }
 }
 
 
-
-// function AddTable() {
-//     $.ajax({
-//         url: 'http://localhost:3001/Artist',
-//         success: function(data) {
-//             var idLname = [];
-//             $.each(data, function(index, key) {
-//                 var arr = [];
-//                 arr.push(data[index]);
-//                 arr.push(index);
-//                 idLname.push(arr);
-//             });
-//             let Table =
-//                 `<table id=Artists class="table" style="width:100%">
-//                     <thead  class="thead-dark">
-                        
-//                     </thead>
-//                     <tbody>`;
-//             for (let i = 0; i < Object.keys(data).length; i++) {
-
-//                 Table +=
-//                     `<tr>
-//                         <th scope="col">name</th>
-//                         <td scope="row">${idLname[i][0].name}</td>
-//                     </tr>
-//                     <tr>
-//                         <th scope="col">id</th>
-//                         <td >${idLname[i][0].id}</td>
-//                     </tr>
-//                     <tr>
-//                         <th scope="col">birth year </th>
-//                         <td >${idLname[i][0].birth_year}</td>
-//                     </tr>
-//                     <tr>
-//                         <th scope="col">password </th>
-//                         <td >${idLname[i][0].password}</td>
-//                     </tr>
-//                     <tr>
-//                         <th scope="col">Action </th>
-//                         <td>
-//                             <button type="button" class="btn btn-outline-primary" onClick="ViewSong(${idLname[i][0].id})">View Songs List</button>
-//                             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" onClick = "addArtistSong(${idLname[i][0].id})">Add Song</button>
-//                             <button type="button" class="btn btn-outline-primary" onClick="deleteArtist(${idLname[i][0].id})"> Delete Artist</button>
-//                          </td>
-//                     </tr>`;
-//             }
-//             Table += ` </tbody></table>`;
-//             $("#table").replaceWith(`<div id=ArtistTable>${Table}</div>`);
-//         },
-//         error: function() {
-//             alert("error has happend")
-//         }
-//     });
-// }
-
-// onLoad = function() {
-//     AddTable();
-// }
-
-// $(document).ready(onLoad);

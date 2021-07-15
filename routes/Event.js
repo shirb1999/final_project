@@ -13,7 +13,7 @@ addEvent: function(req, res) {
 // Read - returns all the event
 getEvent: function (req, res)  {
     Event.find()
-        .populate('artists')
+        .populate('users')
         .then(event => res.send(event))
         .catch(e => res.status(500).send(e))
 }

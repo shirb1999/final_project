@@ -28,15 +28,15 @@
   
   <div class="col-sm-6 col-sm-offset-3">
     <h1>Create new account</h1>
-      <form id="Add_Artist_Form" name="Add_Artist_Form" method="POST">
+      <form id="Add_User_Form" name="Add_User_Form" method="POST">
           <div id="name-group" class="form-group">
               <label for="name">name</label>
-                  <input type="text" class="form-control" name="name" id="artist_name" placeholder="write name here"
+                  <input type="text" class="form-control" name="name" id="user_name" placeholder="write name here"
                     required>
           </div>
           <div id="name-group" class="form-group">
-              <label for="artist_id">ID</label>
-                <input type="text" class="form-control" name="artist_id" id="artist_id" placeholder="write id here"
+              <label for="user_id">ID</label>
+                <input type="text" class="form-control" name="user_id" id="user_id" placeholder="write id here"
                   required>
           </div>
           <div id="name-group" class="form-group">
@@ -77,7 +77,7 @@
             document.getElementById("demo").innerHTML = "One or more of the details are incorrect" 
             return false;
           }
-          addArtist();
+          addUser();
       }
   </script>
 

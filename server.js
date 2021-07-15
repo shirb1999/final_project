@@ -6,7 +6,7 @@ const express = require("express"),
   routers = require("./routes/routes.js");
 require('./db/mongoose')
 // const userRouter = require('./routers/user')
-// const artistRouter = require('./routes/Artist')
+// const userRouter = require('./routes/User')
 
 const app = express();
 const port = 3001;
@@ -24,7 +24,7 @@ app.get('/',(req,res) => {fs.readFile('Screens/HomeScreen.html',  (err, html) =>
 
 app.use(cors());
 app.use(bodyParser.json());
-// app.use(artistRouter);
+// app.use(userRouter);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/kvuda', express.static(path.join(__dirname, 'Screens/user_login.html')));
