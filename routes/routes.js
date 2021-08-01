@@ -1,30 +1,30 @@
 const express = require("express"),
   fs = require("fs"),
-  ArtistRoutes = require("./Artist"),
+  UserRoutes = require("./User"),
   EventRoutes = require("./Event"),
   { check, validationResult } = require('express-validator');
 
 var router = express.Router();
 
-router.get('/Artist', ArtistRoutes.read_all_artist);//read all artist
-router.post('/Artist',
+router.get('/User', UserRoutes.read_all_user);//read all user
+router.post('/User',
       [
         check('name', "Album name can't be empty").notEmpty(),
         check('name', "Album name length should be under 100 chars").isLength({ max: 100 }),
         check('name', "Album name length should at least 2 chars").isLength({ min: 2 }),
 
-      ], ArtistRoutes.create_artist); // create artist
-router.post('/Artist/:id',
+      ], UserRoutes.create_user); // create user
+router.post('/User/:id',
     [
-      check('name', "Artist name should at least 3 chars").isLength({ min: 3 }),
-    ], ArtistRoutes.create_song);   //add new Artist to artist
-// router.get('/Artist/:id', ArtistRoutes.read_song);//read song
-router.get('/users/:id', ArtistRoutes.forget_password);//read song
-router.get('/users_login/:password', ArtistRoutes.user_login);//read song
+      check('name', "User name should at least 3 chars").isLength({ min: 3 }),
+    ], UserRoutes.create_song);   //add new User to user
+// router.get('/User/:id', UserRoutes.read_song);//read song
+router.get('/users/:id', UserRoutes.forget_password);//read song
+router.get('/users_login/:password', UserRoutes.user_login);//read song
 router.post('/Event/', EventRoutes.addEvent);//read song
 router.get('/Event/', EventRoutes.getEvent);//read song
-router.delete('/Artist/:id', ArtistRoutes.delete_artist);//delete artist
+router.delete('/User/:id', UserRoutes.delete_user);//delete user
 
-router.delete('/Song/:id', ArtistRoutes.delete_artist_song);//delete artist song
+router.delete('/Song/:id', UserRoutes.delete_user_song);//delete user song
 
 module.exports = router;

@@ -20,131 +20,66 @@
       <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
       <title>New Account</title>
       <link rel = "icon" type = "image/jpg" href = "https://lh3.googleusercontent.com/-UzvHnr3K9pc/X_H9UnFgcAI/AAAAAAAAC7c/MmXc52VuGt0ok3XV7MAiKVpBnZ_ymn_kACK8BGAsYHg/s460/2021-01-03.jpg">
-      <!-- <link rel = "stylesheet" href = "../css/new_account.css" /> -->
-      <!-- load bootstrap via CDN -->
-      <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js -->
-      <!-- "></script> load jquery via CDN -->
-      <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script> -->
-      <!-- </script> load our javascript file -->
-      <!-- <script type="text/javascript" src="js/ex3.js"></script> -->
+      
       <script src = "js/actions.js"></script>
 </head>
 
 <body>
-    <header>
-        <!-- <div id="lable-Home"><h1>Artist List</h1></div>
-        <div id="table"></div> -->
-        <div id="create"><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalAlbum" onclick="addArtist()"> Create user</button></div>
-    </header>
-
-
-    <!-- Add_Artist_Form -->
-    <div class="modal fade" id="exampleModalAlbum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <!-- <h5 class="modal-title" id="exampleModalLabel">add new song</h5> -->
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="col-sm-6 col-sm-offset-3">
-
-                    <h1>Create new account</h1>
-            
-                    <form id="Add_Artist_Form" name="Add_Artist_Form" method="POST">
-            
-                      <div id="name-group" class="form-group">
-                        <label for="name">name</label>
-                        <input type="text" class="form-control" name="name" id="artist_name" placeholder="write name here"
-                            required>
-                    </div>
-                    <div id="name-group" class="form-group">
-                      <label for="artist_id">ID</label>
-                      <input type="text" class="form-control" name="artist_id" id="artist_id" placeholder="write id here"
-                          required>
-                  </div>
-                  <div id="name-group" class="form-group">
-                    <label for="birth_year">birth tear</label>
-                    <input type="text" class="form-control" name="birth_year" id="birth_year" placeholder="write birth year here"
-                        required>
-                </div>
-
-                <div id="name-group" class="form-group">
-                  <label for="password" type="password">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="write password here"
-                      required>
-              </div>
-
-              <div id="name-group" class="form-group">
-                <label for="rpassword" type="password">Reenter password</label>
-                <input type="password" class="form-control" name="rpassword" id="rpassword" placeholder="write reenter password here"
+  
+  <div class="col-sm-6 col-sm-offset-3">
+    <h1>Create new account</h1>
+      <form id="Add_User_Form" name="Add_User_Form" method="POST">
+          <div id="name-group" class="form-group">
+              <label for="name">name</label>
+                  <input type="text" class="form-control" name="name" id="user_name" placeholder="write name here"
                     required>
-            </div>
+          </div>
+          <div id="name-group" class="form-group">
+              <label for="user_id">ID</label>
+                <input type="text" class="form-control" name="user_id" id="user_id" placeholder="write id here"
+                  required>
+          </div>
+          <div id="name-group" class="form-group">
+              <label for="birth_year">birth tear</label>
+                <input type="text" class="form-control" name="birth_year" id="birth_year" placeholder="write birth year here"
+                  required>
+          </div>
 
-
-              <div id="name-group" class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="write email here"
-                        required>
-            </div>
+          <div id="name-group" class="form-group">
+              <label for="password" type="password">Password</label>
+              <input type="password" class="form-control" name="password" id="password" placeholder="write password here"
+                required>
+          </div>
+          <div id="name-group" class="form-group">
+              <label for="rpassword" type="password">Reenter password</label>
+              <input type="password" class="form-control" name="rpassword" id="rpassword" placeholder="write reenter password here"
+                required>
+          </div>
+          <div id="name-group" class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="write email here"
+                  required>
+          </div>
             
-                        <button type="submit" onclick="return Validate()" class="btn btn-success">Login <span class="fa fa-arrow-right"></span></button>
+          <button type="submit" onclick="return Validate()" class="btn btn-success">Login <span class="fa fa-arrow-right"></span></button>
+          <p id="demo"></p>
+      </form>
             
-                    </form>
-            
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>
+  </div>
+           
 
     <script type="text/javascript">
       function Validate() {
           var password = document.getElementById("password").value;
           var confirmPassword = document.getElementById("rpassword").value;
           if (password != confirmPassword) {
-              alert("Passwords do not match.");
-              return false;
+            
+            document.getElementById("demo").innerHTML = "One or more of the details are incorrect" 
+            return false;
           }
-          return true;
+          addUser();
       }
   </script>
-
-
-
-    <!-- Add_Song_Form -->
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add New Song</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <form id="Add_Song_Form" name="Add_Song_Form" method="POST">
-            
-                        <div id="name-group" class="form-group">
-                            <label for="name">name song</label>
-                            <input type="text" class="form-control" name="name" id="name_song" placeholder="write name song" 
-                                required>
-                        </div>
-      
-                        <button type="submit" class="btn btn-success">Add Song <span class="fa fa-arrow-right"></span></button>
-                    </form>
-            
-                </div>            
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="ViewSongs"></div> -->
 
 </body>
 

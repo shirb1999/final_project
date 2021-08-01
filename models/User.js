@@ -40,7 +40,7 @@ var UserSchema = new mongoose.Schema({
          type: String,
     },
 
-    questions: [{ //reference to Artist
+    questions: [{ //reference to User
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Question',
         required: true
@@ -49,6 +49,6 @@ var UserSchema = new mongoose.Schema({
     
 }, { timestamps: true });
 
-const Artist = mongoose.model('Artist', UserSchema);
+const User = mongoose.model('User', UserSchema);
 
-module.exports = Artist
+module.exports = User

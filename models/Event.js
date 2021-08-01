@@ -15,9 +15,9 @@ var EventSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    artists: [{ //reference to Artist
+    users: [{ //reference to User
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Artist',
+        ref: 'User',
         required: true
     }]
     
