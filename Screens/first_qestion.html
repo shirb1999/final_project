@@ -1,57 +1,133 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+    <head>
 
-    <!-- For the logo in the tab -->
-    <title>KVU-DA</title>
-    <link rel="icon" type="image/jpg" href="https://lh3.googleusercontent.com/-UzvHnr3K9pc/X_H9UnFgcAI/AAAAAAAAC7c/MmXc52VuGt0ok3XV7MAiKVpBnZ_ymn_kACK8BGAsYHg/s460/2021-01-03.jpg">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/forget_password.css" />
-    <!-- load bootstrap via CDN -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
-    "></script> <!-- load jquery via CDN -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-    <script src="js/forget.js">
-    </script> <!-- load our javascript file -->
+        <!-- For the logo in the tab -->
+        <title>KVU-DA</title>
+        <link rel="icon" type="image/jpg" href="https://lh3.googleusercontent.com/-UzvHnr3K9pc/X_H9UnFgcAI/AAAAAAAAC7c/MmXc52VuGt0ok3XV7MAiKVpBnZ_ymn_kACK8BGAsYHg/s460/2021-01-03.jpg">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="../css/forget_password.css" /> -->
+        <!-- load bootstrap via CDN -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- load jquery via CDN -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+        <script src="js/actions.js">
+        </script> <!-- load our javascript file -->
     
+    <meta name="NetsparkQuiltingResult" total-length="1140" removed="0" rules-found="w4889,w4890,w5110,w3123,w2341,w2263,w240,w2707" />
+    </head>
 
-<meta name="NetsparkQuiltingResult" total-length="1140" removed="0" rules-found="w4889,w4890,w5110,w3123,w2341,w2263,w240,w2707" />
-</head>
+    <body>
+        <div class="col-sm-6 col-sm-offset-3">
 
-<body>
-    <div class="col-sm-6 col-sm-offset-3">
+            <h1>you hve a few qestion:</h1>
+            <!-- <img id="my_image" src="mal.jpg"></img> -->
+            
+            <!-- OUR FORM -->
+            <form id="user_form" name="user_form" method="POST">
 
-        <h1>you hve a few qestion:</h1>
+                <!-- Genus -->
+                <div id="name-group" class="form-group">
+                    <label for="genus">זכר/נקבה?</label>
+                    <br>
+                    <form>
+                        <select id="genus">
+                        <option>זכר</option>
+                        <option>נקבה</option>
+                        </select>
+                    <!-- errors will go here -->
+                </div>
+                <br>
+                <!-- Disability -->
+                <div id="name-group" class="form-group">
+                    <label for="disability">האם אתה מחזיק בתעודת נכות?</label>
+                    <br>
+                    <form>
+                        <select id="disability">
+                        <option>כן</option>
+                        <option>לא</option>
+                        </select>
+                    <!-- errors will go here -->
+                </div>
+                <br>
+                <!-- Hearing -->
+                <div id="name-group" class="form-group">
+                    <label for="hearing">האם אתה עם מכשיר שמיעה?</label>
+                    <br>
+                    <form>
+                        <select id="hearing">
+                        <option>כן</option>
+                        <option>לא</option>
+                        </select>
+                    <!-- errors will go here -->
+                </div>
+                <br>
+                <!-- License -->
+                <div id="name-group" class="form-group">
+                    <label for="license">האם אתה בעל רישיון נהיגה?</label>
+                    <br>
+                    <form>
+                        <select id="license">
+                        <option>כן</option>
+                        <option>לא</option>
+                        </select>
+                    <!-- errors will go here -->
+                </div>
+                <br>
+                <!-- Glasses -->
+                <div id="name-group" class="form-group">
+                    <label for="glasses">האם אתה מרכיב משקפיים?</label>
+                    <br>
+                    <form>
+                        <select id="glasses">
+                        <option>כן</option>
+                        <option>לא</option>
+                        </select>
+                    <!-- errors will go here -->
+                </div>
+                <br>
+                <!-- Lenses -->
+                <div id="name-group" class="form-group">
+                    <label for="lenses">האם אתה משתמש בעדשות??</label>
+                    <br>
+                    <form>
+                        <select id="lenses">
+                        <option>כן</option>
+                        <option>לא</option>
+                        </select>
+                    <!-- errors will go here -->
+                </div>
+                <br>
+                 <!-- Drug -->
+                 <div id="name-group" class="form-group">
+                    <label for="drug">האם אתה נוטל תרופות באופן קבוע?</label>
+                    <br>
+                    <form>
+                        <select id="drug">
+                        <option>כן</option>
+                        <option>לא</option>
+                        </select>
+                    <!-- errors will go here -->
+                </div>
+                <br>
+                <!-- Cosher -->
+                <div id="name-group" class="form-group">
+                    <label for="cosher">?האם אתה שומר כשרות</label>
+                    <br>
+                    <select id="cosher">
+                        <option>כן</option>
+                        <option>לא</option>
+                    </select>
+                    <!-- errors will go here -->
+                </div>
+                <br>
+                <button type="submit" onclick="addQuestion()" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+                <p id="demo"></p>
+            </form>
 
-        <img id="my_image" src="mal.jpg"></img>
-
-
-        <!-- OUR FORM -->
-        <form id="user_form" name="user_form" method="GET">
-
-            <!-- NAME -->
-            <div id="name-group" class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="username" placeholder="write name here"
-                    required>
-                <!-- errors will go here -->
-            </div>
-
-            <!-- ID -->
-            <div id="name-group" class="form-group">
-                <label for="id">ID</label>
-                <input type="text" class="form-control" name="id_field" id="id_field" placeholder="write id here"
-                    required>
-                <!-- errors will go here -->
-            </div>
-
-            <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
-            <p id="demo"></p>
-        </form>
-
-    </div>
-</body>
+        </div>
+        
+    </body>
 
 
 </html>

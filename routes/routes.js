@@ -22,6 +22,8 @@ router.post('/User/:id',
 router.get('/users/:id', UserRoutes.forget_password);//read song
 router.get('/users_login/:password', UserRoutes.user_login);//read song
 router.post('/Event/', EventRoutes.addEvent);//read song
+router.post('/question/:id', UserRoutes.addQuestion);//read song
+router.post('/trip/:id', UserRoutes.addTrip);//read song
 router.get('/Event/', EventRoutes.getEvent);//read song
 router.delete('/User/:id', UserRoutes.delete_user);//delete user
 
