@@ -11,7 +11,7 @@ require('./db/mongoose')
 const app = express();
 const port = 3001;
 
-app.get('/',(req,res) => {fs.readFile('Screens/HomeScreen.html',  (err, html) => {
+app.get('/',(req,res) => {fs.readFile('Screens/user_login.html',  (err, html) => {
     if (err) {
         throw err; 
     }       
@@ -55,6 +55,6 @@ app.use('/first_qestion', express.static(path.join(__dirname, 'Screens/first_qes
 
 app.use('/trip_qestion', express.static(path.join(__dirname, 'Screens/trip_qestion.html')));
 
-const server = app.listen(port, () => {
-  console.log("listening on port %s...", server.address().port);
+app.listen(process.env.PORT || 3001, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });

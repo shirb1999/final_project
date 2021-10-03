@@ -49,8 +49,6 @@ var transporter = nodemailer.createTransport({
           console.log('Email sent: ' + info.response);
         }
       })
-    
-  
 }
   
 module.exports = {
