@@ -13,6 +13,9 @@
    
   }
   
+  p {
+    color: rgb(255, 0, 13);
+  }
   
   body {
       font-family:  Helvetica, sans-serif;

@@ -5,9 +5,16 @@ $('#user_form').submit(function (event) {
   // process the form
   $.ajax({
       type: "GET", // define the type of HTTP verb we want to use ("GET" for our form)
-      url: 'http://localhost:3001/users_login/' + $("#password").val() + $("#username").val(), // the url where we want to POST
+      url: 'http://localhost:3001/users_login/' + $("#password").val() + $("#id_field").val(), // the url where we want to POST
       success: function( data, textStatus, jQxhr ){
-          console.log("tytytytytyty"); 
+          var x = document.getElementById("myDIV");
+          x.style.display = "none";
+          if(data == $("#password").val())
+            window.location.href="home";
+          else{
+            document.getElementById("demo").innerHTML = "One or more of the details are incorrect"
+          }
+              
              
       },
       error: function(errorThrown) {
@@ -19,6 +26,15 @@ $('#user_form').submit(function (event) {
   // stop the form submitting the normal way and refreshing the page
   event.preventDefault();
 });
+
+function outputAlert() {
+  
+  
+    document.getElementById("demo").innerHTML = "Default value and current value is the same: "
+    
+}
+
+
 
 var myInput = document.getElementById("password");
 var letter = document.getElementById("letter");
