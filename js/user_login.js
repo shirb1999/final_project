@@ -7,18 +7,16 @@ $('#user_form').submit(function (event) {
       type: "GET", // define the type of HTTP verb we want to use ("GET" for our form)
       url: 'http://localhost:3001/users_login/' + $("#password").val() + $("#id_field").val(), // the url where we want to POST
       success: function( data, textStatus, jQxhr ){
-          var x = document.getElementById("myDIV");
+          var x = document.getElementById("myDIV"); //Check if the password is equal to the password in the data
           x.style.display = "none";
           if(data == $("#password").val())
-            window.location.href="home";
+            window.location.href="home"; //Go to the home page
           else{
             document.getElementById("demo").innerHTML = "One or more of the details are incorrect"
-          }
-              
-             
+          }   
       },
-      error: function(errorThrown) {
-          alert("User gggggggggg");
+      error: function(errorThrown) { //When the data is incorrect
+          alert("User dont exist or one or more parameters incorrect");
 
       }
   })

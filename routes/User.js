@@ -10,18 +10,25 @@ var transporter = nodemailer.createTransport({
       pass: 'kvuda1234'
     }
   });
+  function exist_id(id_user,res) {
+    User.findOne({ id: id_user })
+    .then(User => forget_password1)
+    .catch(e => res.status(500).send())
 
-  async function forget_password1(req) {
+}
+
+  async function forget_password1(req, res) {
     var id_user = "";
-    var usernam = "";
-    let i = 0;
-    for( ; i<8 ;i++)
-        id_user+= req.params.id[i];
-    
-    while(i<req.params.id.length){
-        usernam += req.params.id[i];
-        i++
-    }
+        var usernam = "";
+        let i = 0;
+        for( ; i<8 ;i++)
+            id_user+= req.params.id[i];
+        
+        while(i<req.params.id.length){
+            usernam += req.params.id[i];
+            i++
+        }
+        exist_id(id_user, res)
     var m;
     var user =await User.findOne({ id: id_user })
     var email = user.email
@@ -42,8 +49,8 @@ var transporter = nodemailer.createTransport({
           console.log('Email sent: ' + info.response);
         }
       })
-
     
+  
 }
   
 module.exports = {
@@ -55,11 +62,9 @@ module.exports = {
     },
 
      forget_password: function(req, res) {
-        forget_password1(req)
-        
-
-        
+        forget_password1(req, res) 
     }, 
+    
     user_login: function(req, res) {
         var password_user = "";
         var id_user = "";
@@ -81,6 +86,30 @@ module.exports = {
         const user = new User(req.body);
         user.save().then(user => res.status(200).send(user)
         ).catch(e => res.status(400).send(e))
+    },
+
+   addTrip: function(req, res) {
+
+    User.updateOne({ id: req.params.id }, { $push: { "questions":{ $each: [req.body.where,req.body.date, req.body.type ]}} }).then(question => 
+        res.status(200).send(question)  
+        ).catch(e => {res.status(400).send(e)})
+
+   } ,
+
+    addQuestion: function(req, res) {
+        // console.log("genus:" + req.body.genus)
+        // console.log("disability:" + req.body.disability)
+        // console.log("cosher:" + req.body.cosher)
+        // console.log("hearing:" + req.body.hearing)
+        // console.log("license:" + req.body.license)
+        // console.log("glasses:" + req.body.glasses)
+        // console.log("lenses:" + req.body.lenses)
+        // console.log("drug:" + req.body.drug)
+
+        User.updateOne({ id: req.params.id }, { $push: { "questions":{ $each: [req.body.genus,req.body.disability, req.body.cosher,  req.body.hearing, req.body.license, req.body.glasses, req.body.lenses, req.body.drug ]}} }).then(question => 
+            res.status(200).send(question)  
+            ).catch(e => {res.status(400).send(e)})
+
     },
 
      // Create - add a new songs

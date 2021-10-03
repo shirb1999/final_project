@@ -41,9 +41,9 @@ var UserSchema = new mongoose.Schema({
     },
 
     questions: [{ //reference to User
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Question',
-        required: true
+        type: String,
+        // ref: 'Question',
+        // required: true
     }]
     
     
