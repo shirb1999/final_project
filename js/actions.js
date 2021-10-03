@@ -1,3 +1,4 @@
+var Id;
 $('#exampleModal').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -7,8 +8,7 @@ $('#exampleModal').on('show.bs.modal', function(event) {
     modal.find('.modal-title').text('New message to ' + recipient)
     modal.find('.modal-body input').val(recipient)
 })
-
-function addUser() {
+function addUser() { //Add new users
     $("form[name='Add_User_Form']").validate({
         rules: {
             name: {
@@ -36,14 +36,78 @@ function addUser() {
             processData: false,
             encode: true,
             success: function(data, textStatus, jQxhr) {
-                window.location.href="home";
+                localStorage.setItem('idUser', $("#user_id").val()); //craete global argument
+                window.location.href="first_qestion"; //Go to the page question
             },
-            error: function(jqXhr, textStatus, errorThrown) {
+            error: function(jqXhr, textStatus, errorThrown) { //When the data is incorrect
                 alert("failed to add user");
             },
         });
         event.preventDefault();
     });
+}
+
+function addTrip(){
+    Id = localStorage.getItem('idUser')
+    console.log("id:"+ Id);
+    $("#new_trip").submit(function(event) {
+        if (!$("#new_trip").valid()) return;
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3001/trip/" + Id,
+            contentType: "application/json",
+            data: JSON.stringify({
+                where: $("#where").val(),
+                date: $("#date").val(),
+                dayes: $("#dayes").val(),
+                type: $("#type").val(),
+            }),
+            processData: false,
+            encode: true,
+            success: function(data, textStatus, jQxhr) {
+                window.location.href="trip_qestion"; //Go to the page question
+            },
+            error: function(jqXhr, textStatus, errorThrown) {
+                alert("failed to add song");
+
+            },
+        });
+        event.preventDefault();
+    });
+}
+
+function addQuestion() {
+    Id = localStorage.getItem('idUser')
+    console.log("id:"+ Id);
+    $("#user_form").submit(function(event) {
+        if (!$("#user_form").valid()) return;
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3001/question/" + Id,
+            contentType: "application/json",
+            data: JSON.stringify({
+                genus: $("#genus").val(),
+                cosher: $("#cosher").val(),
+                disability: $("#disability").val(),
+                hearing: $("#hearing").val(),
+                license: $("#license").val(),
+                glasses: $("#glasses").val(),
+                lenses: $("#lenses").val(),
+                drug: $("#drug").val()
+            }),
+            processData: false,
+            encode: true,
+            success: function(data, textStatus, jQxhr) {
+                location.reload();
+            },
+            error: function(jqXhr, textStatus, errorThrown) {
+                alert("failed to add song");
+
+            },
+        });
+        event.preventDefault();
+    });
+        
 }
 
 function ViewSong(id) {

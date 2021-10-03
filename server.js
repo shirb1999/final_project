@@ -43,15 +43,17 @@ app.use('/faqs', express.static(path.join(__dirname, 'Screens/faqs.html')));
 
 app.use('/contact_us', express.static(path.join(__dirname, 'Screens/contact_us.html')));
 
+app.use('/new_travel', express.static(path.join(__dirname, 'Screens/new_travel.html')));
+
 app.use('/about_us', express.static(path.join(__dirname, 'Screens/about_us.html')));
 
 app.use('/home', express.static(path.join(__dirname, 'Screens/home.html')));
 
 app.use('/forget', express.static(path.join(__dirname, 'Screens/forget_password.html')));
 
-// const server = app.listen(port, () => {
-//   console.log("listening on port %s...", server.address().port);
-// });
+app.use('/first_qestion', express.static(path.join(__dirname, 'Screens/first_qestion.html')));
+
+app.use('/trip_qestion', express.static(path.join(__dirname, 'Screens/trip_qestion.html')));
 
 app.listen(process.env.PORT || 3001, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
