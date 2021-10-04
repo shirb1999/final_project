@@ -6,7 +6,7 @@ const express = require("express"),
 
 var router = express.Router();
 
-router.get('/User', UserRoutes.read_all_user);//read all user
+router.get('/User/:id', UserRoutes.read_all_qestion);//read all user
 router.post('/User',
       [
         check('name', "Album name can't be empty").notEmpty(),
@@ -22,7 +22,9 @@ router.post('/User/:id',
 router.get('/users/:id', UserRoutes.forget_password);//read song
 router.get('/users_login/:password', UserRoutes.user_login);//read song
 router.post('/Event/', EventRoutes.addEvent);//read song
+router.post('/Update/:id', UserRoutes.updateQestion);//read song
 router.post('/question/:id', UserRoutes.addQuestion);//read song
+router.post('/list/', UserRoutes.listTake);//read song
 router.post('/trip/:id', UserRoutes.addTrip);//read song
 router.get('/Event/', EventRoutes.getEvent);//read song
 router.delete('/User/:id', UserRoutes.delete_user);//delete user
