@@ -1,0 +1,116 @@
+th,
+td {
+    /* text-align: center; */
+    /* border: 3px solid black; */
+    border-collapse: collapse;
+}
+
+table {
+    border-radius: 25px;
+    /* border: 3px solid black; */
+    border-collapse: collapse;
+}
+
+header {
+    font: italic 1.2em "Fira Sans", serif;
+    width: 100%;
+}
+
+#lable-Home {
+    border: none;
+    text-align: center;
+    padding-top: 20px;
+    font: italic 1.2em "Fira Sans", serif;
+}
+
+#create {
+    /* width: 50%;*/
+    text-align: center;
+    outline: none;
+}
+
+table,
+tr,
+td {
+    border: none;
+    border-collapse: collapse;
+}
+
+#ArtistTable {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    border: none;
+    /* border: 1px solid #000000; */
+}
+
+#ViewSongs {
+    width: 20%;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+    font: italic 1.2em "Fira Sans", serif;
+}
+
+.modal-content {
+    width: 100%;
+    margin: auto;
+}
+
+.modal-title,
+.modal-body {
+    width: 250%;
+    margin: auto;
+}
+
+#name-group {
+    /* width: 70%; */
+}
+
+img {
+    width: 200px;
+}
+
+p {
+    color: rgb(255, 0, 13);
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+body.signup-page {
+    color: #131982;
+}
+
+button.btn.btn-success {
+    background-color: #131982;
+    border-color: #131982;
+    opacity: 0.9;
+    width: 100%;
+    margin-top: 20px !important;
+}
+
+button.btn.btn-success:hover {
+    opacity: 1;
+}
+
+form#Add_User_Form {
+    background: aliceblue;
+    padding: 50px 70px;
+    width: 600px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+@media (min-width: 576px) {
+    .col-sm-6 {
+        max-width: unset;
+    }
+}

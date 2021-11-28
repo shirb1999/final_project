@@ -1,0 +1,157 @@
+/* background image*/
+.bg-image {
+  
+    background-image     : url(https://lh3.googleusercontent.com/-iPr4qII7bzg/X_H9IS41pkI/AAAAAAAAC7Y/s8bdfmLWdFUgfrntJY6dTdxaq5wVx2WkgCK8BGAsYHg/s0/2021-01-03.jpg);  /* The image used */
+    width                : 100%;
+    float                : right;
+    /* Center and scale the image nicely */
+    background-position  : center;
+    background-repeat    : no-repeat;
+    background-size      : cover;
+    height               : 100%;
+    
+   
+  }
+  
+  p {
+    color: rgb(255, 0, 13);
+  }
+  
+  body {
+      font-family:  Helvetica, sans-serif;
+       }
+       
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  h4
+  {
+      display: inline;
+  
+  }
+  form {
+        width             : 30%;
+        float             : right;
+        margin-top        : 8%;
+        margin-right      : 5%;
+  } 
+  
+  .container1{
+      background-color: white;
+  }
+  
+  
+  .container2{
+            background-color  : rgba(255,255,255,0.85); /* see-through*/
+        padding           : 50px;
+        
+  
+  
+  }
+  input[type=text], input[type=password] {
+    width    : 90%;
+    padding  : 12px 20px;
+    margin   : 8px 0;
+    border   : 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    background-color: black;
+    font-size:20px;
+  
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  
+  span {
+    float       : right;
+    padding-top : 16px;
+    width       : 100%;
+  }
+  
+  #date{
+      color: white;
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 1050px) {
+      form {
+        
+        margin       : 2% 2% 2% 2%;
+        height       : 55%;
+        
+        
+        
+  } 
+  .container2{
+      height: 100%;
+  }
+  #date{
+      font-size:  0px;
+      width    :  100%;
+  }
+   
+    
+  }
+  @media screen and (max-width: 800px) {
+      form {
+          width: 80%;
+      }
+  }
+  
+  @media screen and (max-width: 350px) {
+      .container2 {
+          padding: 4%;
+      }
+  }
+  @media screen and (max-width: 250px) {
+      form {
+          height       : 70%;
+      }
+  }
+
+ 
+  
+  /* The message box is shown when the user clicks on the password field */
+  /* #message {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    
+  } */
+  
+ 
+  
+  /* Add a green text color and a checkmark when the requirements are right */
+  /* .valid {
+    color: green;
+  } */
+  
+  /* .valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+  } */
+  
+  /* Add a red text color and an "x" when the requirements are wrong */
+  /* .invalid {
+    color: red;
+  } */
+  
+  /* .invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+  } */

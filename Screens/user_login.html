@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- For the logo in the tab -->
+        <title>KVU-DA</title>
+        <link rel="icon" type="image/jpg" href="https://lh3.googleusercontent.com/-UzvHnr3K9pc/X_H9UnFgcAI/AAAAAAAAC7c/MmXc52VuGt0ok3XV7MAiKVpBnZ_ymn_kACK8BGAsYHg/s460/2021-01-03.jpg">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/index.css" />
+        <!-- load bootstrap via CDN -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
+        "></script> <!-- load jquery via CDN -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+        <!-- <script src="js/user_login.js"></script> -->
+        <script src="js/actions.js"></script>
+         
+        <meta name="NetsparkQuiltingResult" total-length="1663" removed="0" rules-found="w4889,w4890,w5110,w3123,w2341,w240,w2707" />‏
+
+    </head>
+
+<body>
+    
+  <div class="bg-image">
+  <form id="user_form" name="user_form" method="GET">
+    <div class = "container1">
+        <img src=https://lh3.googleusercontent.com/-UzvHnr3K9pc/X_H9UnFgcAI/AAAAAAAAC7c/MmXc52VuGt0ok3XV7MAiKVpBnZ_ymn_kACK8BGAsYHg/s460/2021-01-03.jpg width="10%" height="10%" align="middle">
+        <h4> Login  </h4>
+    </div>
+
+    <div class = "container2">
+      <!-- Password -->
+      <div id="name-group" class="form-group">
+        <label for="id" ><b>ID</b></label><br>
+        <input type="text" class="form-control" name="id_field" id="id_field" maxlength="9" minlength="9" placeholder="write id here"
+            required>
+        <!-- errors will go here -->
+    </div>
+    
+    <!-- ID -->
+    <div id="name-group" class="form-group">
+        <label for="psw" type="password"><b>Password</b></label>
+        <input type="password" class="form-control" name="password" id="password" maxlength="8" minlength="8" placeholder="write password here"
+            required>
+        <!-- errors will go here -->
+    </div>
+        <button type="submit" onclick="user_login()">Login</button>
+      <div id="myDIV">
+        <p id="demo"></p>
+      </div>
+        <br>
+        <br>
+
+        <a href="/forget" class="webMnu" onclick="window.open(forget.html);">Forgot password?</a>
+        <br>
+        <br>
+        <!-- <span><a href="html/new_account.html">Don't have an account yet? Sign up</a></span> -->
+        <a href="/adduser" class="webMnu" onclick="window.open(adduser.html);">Don't have an account yet? Sign up</a>
+    </div>
+  </form>
+
+  </div>
+
+
+
+
+
+
+
+
+    <!-- <div id="message">
+        <h3>Password must contain the following:</h3>
+        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+        <p id="number" class="invalid">A <b>number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    </div> -->
+    <!-- <script>
+        var myInput = document.getElementById("password");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+        
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function() {
+          document.getElementById("message").style.display = "block";
+        }
+        
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function() {
+          document.getElementById("message").style.display = "none";
+        }
+        
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function() {
+          // Validate lowercase letters
+          var lowerCaseLetters = /[a-z]/g;
+          if(myInput.value.match(lowerCaseLetters)) {  
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+          } else {
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
+          }
+          
+          // Validate capital letters
+          var upperCaseLetters = /[A-Z]/g;
+          if(myInput.value.match(upperCaseLetters)) {  
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
+          } else {
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
+          }
+        
+          // Validate numbers
+          var numbers = /[0-9]/g;
+          if(myInput.value.match(numbers)) {  
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+          } else {
+            number.classList.remove("valid");
+            number.classList.add("invalid");
+          }
+          
+          // Validate length
+          if(myInput.value.length >= 8) {
+            length.classList.remove("invalid");
+            length.classList.add("valid");
+          } else {
+            length.classList.remove("valid");
+            length.classList.add("invalid");
+          }
+        }
+        </script> -->
+</body>
+
+</html>
+

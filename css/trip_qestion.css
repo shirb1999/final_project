@@ -1,0 +1,27 @@
+html{
+  background-color: #ff9;
+  color: white
+}
+
+table{
+  border-collapse: separate;
+  border-spacing: 1em
+}
+
+td{
+  /* background-image: url('https://tmuna.co/wp-content/uploads/2020/03/%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%9E%D7%97%D7%95%D7%9C%D7%A7%D7%95%D7%AA-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%91%D7%97%D7%9C%D7%A7%D7%99%D7%9D-%D7%96%D7%95%D7%92-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-%D7%91%D7%97%D7%9C%D7%A7%D7%99%D7%9D-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%A7%D7%99%D7%A8-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-%D7%91%D7%97%D7%9C%D7%A7%D7%99%D7%9D-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%9E%D7%97%D7%95%D7%9C%D7%A7%D7%95%D7%AA-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%91%D7%97%D7%9C%D7%A7%D7%99%D7%9D-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-4-1.jpg'); */
+  background-position: auto auto;
+  background-attachment: fixed;
+  background-clip: padding-box;
+  padding: 2em;
+  color: rgb(255, 255, 255)
+}
+
+/* #a{
+  background-image: url('https://tmuna.co/wp-content/uploads/2020/03/%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%9E%D7%97%D7%95%D7%9C%D7%A7%D7%95%D7%AA-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%91%D7%97%D7%9C%D7%A7%D7%99%D7%9D-%D7%96%D7%95%D7%92-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-%D7%91%D7%97%D7%9C%D7%A7%D7%99%D7%9D-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%A7%D7%99%D7%A8-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-%D7%91%D7%97%D7%9C%D7%A7%D7%99%D7%9D-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%9E%D7%97%D7%95%D7%9C%D7%A7%D7%95%D7%AA-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%91%D7%97%D7%9C%D7%A7%D7%99%D7%9D-%D7%9C%D7%A1%D7%9C%D7%95%D7%9F-4-1.jpg');
+  background-position: auto auto;
+  background-attachment: fixed;
+  background-clip: padding-box;
+  padding: 2em;
+  color: #fff
+} */

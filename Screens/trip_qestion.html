@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+    function exits() {
+        return "Write something clever here...";
+    }
+</script>
+
+<head>
+    <!-- For the logo in the tab -->
+    <title>KVU-DA</title>
+    <link rel="icon" type="image/jpg" href="https://lh3.googleusercontent.com/-UzvHnr3K9pc/X_H9UnFgcAI/AAAAAAAAC7c/MmXc52VuGt0ok3XV7MAiKVpBnZ_ymn_kACK8BGAsYHg/s460/2021-01-03.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="../css/trip_qestion.css" /> -->
+    <!-- load bootstrap via CDN -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> load jquery via CDN -->
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script> -->
+    <link rel="stylesheet" href="../css/questions.css">
+
+    <script src="js/actions.js">
+    </script>
+    <!-- load our javascript file -->
+
+    <body onbeforeunload="return exits()"></body>
+    <meta name="NetsparkQuiltingResult" total-length="1140" removed="0" rules-found="w4889,w4890,w5110,w3123,w2341,w2263,w240,w2707" />
+</head>
+
+<body>
+    <div class="qstns-container">
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <h1>Trip questions:</h1>
+
+            <form id="user_trip" name="user_trip" method="POST">
+
+                <!-- suitcase -->
+                <div id="name-group" class="form-group">
+                    <label for="suitcase">What kind of suitcase do you have?</label>
+                    <br>
+                    <select id="suitcase">
+                      <option>trunk</option>
+                      <option>trolley bag</option>
+                      <option>both</option>
+                    </select>
+                </div>
+                <br>
+                <!-- laundry -->
+                <div id="name-group" class="form-group">
+                    <label for="laundry">Do you have the option to wash clothes wherever you are?</label>
+                    <br>
+                    <select id="laundry">
+                    <option>Yes</option>
+                    <option>No</option>
+                    </select>
+                </div>
+                <br>
+                <!-- immunization_booklet -->
+                <div id="name-group" class="form-group">
+                    <label for="immunization_booklet">Travel to a destination that needs an immunization booklet?</label>
+                    <br>
+                    <select id="immunization_booklet">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <br>
+                <!-- Camera -->
+                <div id="name-group" class="form-group">
+                    <label for="camera">Would you like to take a camera with you on a trip?</label>
+                    <br>
+                    <select id="camera">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <br>
+                <!-- Children -->
+                <div id="name-group" class="form-group">
+                    <label for="children">Do you travel with children?</label>
+                    <br>
+                    <select id="children">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <br>
+                <!-- towels -->
+                <div id="name-group" class="form-group">
+                    <label for="towels">Will you have towels where you will stay?</label>
+                    <br>
+                    <select id="towels">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <br>
+                <!-- socket adapter -->
+                <div id="name-group" class="form-group">
+                    <label for="socket_adapter">Do you need a socket adapter?</label>
+                    <br>
+                    <select id="socket_adapter">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <br>
+                <!-- Food -->
+                <div id="name-group" class="form-group">
+                    <label for="food">Is food served on your flight?</label>
+                    <br>
+                    <select id="food">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <br>
+                <!-- rental car -->
+                <div id="name-group" class="form-group">
+                    <label for="rental_car">Do you take a rental car in advance?</label>
+                    <br>
+                    <select id="rental_car">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                </div>
+                <br>
+                <button type="submit" onclick="addQuestion()" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+                <p id="demo"></p>
+            </form>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

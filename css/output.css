@@ -1,0 +1,62 @@
+body {
+    color: #131982;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.output-container {
+    width: 50%;
+    background: aliceblue;
+    margin: auto;
+    /* height: 100vh; */
+    padding: 50px 100px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#print_button {
+    left: 100%;
+    position: relative;
+    background: #131982;
+    color: white;
+    padding: 6px 20px;
+}
+#final_output {
+    left: 100%;
+    /* right: inherit; */
+    position: relative;
+    background: #131982;
+    color: white;
+    padding: 6px 20px;
+}
+
+ul.taking-list {
+    list-style: none;
+    padding-left: 10px;
+}
+
+input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+}
+
+ul.taking-list li {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+ul.taking-list li.inner-title {
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 47px;
+    margin-top: 20px;
+}
+
+i.fa.fa-plus-square {
+    font-size: 31px;
+    margin-left: 5px;
+    cursor: pointer;
+}
