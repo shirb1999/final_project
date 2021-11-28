@@ -19,7 +19,7 @@ function addUser() { //Add new users
         $.ajax({
             type: "POST",
             // url: "http://localhost:3001/User",
-            url: "https://kvudaweb.herokuapp.com/User",
+            url: "https://kvuda.herokuapp.com/User",
             contentType: "application/json",
             data: JSON.stringify({
                 name: $("#user_name").val(),
@@ -51,7 +51,7 @@ function send_mail() {
         $.ajax({
             type: "POST",
             // url: "http://localhost:3001/send_mail/" + Id,
-            url: "https://kvudaweb.herokuapp.com/send_mail/" + Id,
+            url: "https://kvuda.herokuapp.com/send_mail/" + Id,
             contentType: "application/json",
             data: JSON.stringify({
                 name: $("#name").val(),
@@ -94,7 +94,7 @@ function addTrip() {
         $.ajax({
             type: "POST",
             // url: "http://localhost:3001/trip/" + value ,
-            url: "https://kvudaweb.herokuapp.com/trip/" + value ,
+            url: "https://kvuda.herokuapp.com/trip/" + value ,
             contentType: "application/json",
             data: JSON.stringify({
                 where: $("#where").val(),
@@ -125,7 +125,7 @@ function user_login() {
         $.ajax({
             type: "GET", // define the type of HTTP verb we want to use ("GET" for our form)
             // url: 'http://localhost:3001/users_login/' + $("#password").val() + $("#id_field").val(), // the url where we want to POST
-            url: 'https://kvudaweb.herokuapp.com/users_login/' + $("#password").val() + $("#id_field").val(),
+            url: 'https://kvuda.herokuapp.com/users_login/' + $("#password").val() + $("#id_field").val(),
             success: function( data, textStatus, jQxhr ){
                 password = $("#password").val();
                 if(data.localeCompare(password)==0){
@@ -152,7 +152,7 @@ function addQuestion() {
         $.ajax({
             type: "POST",
             // url: "http://localhost:3001/question/" + Id,
-            url: "https://kvudaweb.herokuapp.com/question/" + Id,
+            url: "https://kvuda.herokuapp.com/question/" + Id,
             contentType: "application/json",
             data: JSON.stringify({
                 genus: $("#genus").val(),
@@ -186,7 +186,7 @@ function update_data() {
     $.ajax({
             type: "POST",
             // url: "http://localhost:3001/update_data/" + Id ,
-            url: "https://kvudaweb.herokuapp.com/update_data/" + Id ,
+            url: "https://kvuda.herokuapp.com/update_data/" + Id ,
             contentType: "application/json",
             data: JSON.stringify({
                 genus: $("#genus").val(),
@@ -334,7 +334,7 @@ $(document).ready(function() {
             $.ajax({
                 type: "GET",
                 // url: "http://localhost:3001/read_question/" + Id ,
-                url: "https://kvudaweb.herokuapp.com/read_question/" + Id ,
+                url: "https://kvuda.herokuapp.com/read_question/" + Id ,
                 contentType: "application/json",
                 processData: false,
                 encode: true,
