@@ -142,11 +142,12 @@ module.exports = {
         let whatToTake = [];
         let arr = [];
         var laundry = req.body.laundry;
+        console.log(laundry);
         var days = req.body.dayes;
         var amount = days;
         if(laundry.localeCompare("can_laundry")==0 && (days>5)){
-            if(days % 5 == 0)
-                amount = Math.floor(days / 5)
+            amount = 5
+            console.log("yes")
         }    
         User.findOne({ id: array[0] }).exec()
                 .then(user =>{
