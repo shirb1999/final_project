@@ -18,8 +18,8 @@ function addUser() { //Add new users
         if (!$("#Add_User_Form").valid()) return;
         $.ajax({
             type: "POST",
-            // url: "http://localhost:3001/User",
-            url: "https://kvuda.herokuapp.com/User",
+            url: "http://localhost:3001/User",
+            // url: "https://kvudaweb.herokuapp.com/User",
             contentType: "application/json",
             data: JSON.stringify({
                 name: $("#user_name").val(),
@@ -37,7 +37,7 @@ function addUser() { //Add new users
                 window.location.href = "first_qestion"; //Go to the page question
             },
             error: function(jqXhr, textStatus, errorThrown) { //When the data is incorrect
-                alert("failed to add user");
+                alert("This user already exists");
             },
         });
         event.preventDefault();
@@ -50,8 +50,8 @@ function send_mail() {
         if (!$("#contact").valid()) return;
         $.ajax({
             type: "POST",
-            // url: "http://localhost:3001/send_mail/" + Id,
-            url: "https://kvuda.herokuapp.com/send_mail/" + Id,
+            url: "http://localhost:3001/send_mail/" + Id,
+            // url: "https://kvudaweb.herokuapp.com/send_mail/" + Id,
             contentType: "application/json",
             data: JSON.stringify({
                 name: $("#name").val(),
@@ -89,12 +89,16 @@ function addTrip() {
                 }
             }
     // alert(selectedValue);
+    if(selectedValue==undefined){
+        alert("Please fill in the field of laundry")
+    }
+    else{
     $("#new_trip").submit(function(event) {
-        if (!$("#new_trip").valid()) return;
+        if (selectedValue==undefined) return;
         $.ajax({
             type: "POST",
-            // url: "http://localhost:3001/trip/" + value ,
-            url: "https://kvuda.herokuapp.com/trip/" + value ,
+            url: "http://localhost:3001/trip/" + value ,
+            // url: "https://kvudaweb.herokuapp.com/trip/" + value ,
             contentType: "application/json",
             data: JSON.stringify({
                 where: $("#where").val(),
@@ -106,17 +110,21 @@ function addTrip() {
             processData: false,
             encode: true,
             success: function(data, textStatus, jQxhr) {
+                // alert(data)
+                data.push({id:"Your_List",value:[] });
                 localStorage.setItem('result_arr', JSON.stringify(data))
-                result = JSON.parse(localStorage.getItem('result_arr'))
+                // result = JSON.parse(localStorage.getItem('result_arr'))
+                // console.log(result)
                 window.location.href = "output"; //Go to the page question
             },
             error: function(jqXhr, textStatus, errorThrown) {
-                alert("Something wrong please try in a few minutes");
+                alert("unable to find location");
 
             },
         });
         event.preventDefault();
     });
+}
 }
 
 function user_login() {
@@ -124,8 +132,8 @@ function user_login() {
         if(!$("#user_form").valid()) return;
         $.ajax({
             type: "GET", // define the type of HTTP verb we want to use ("GET" for our form)
-            // url: 'http://localhost:3001/users_login/' + $("#password").val() + $("#id_field").val(), // the url where we want to POST
-            url: 'https://kvuda.herokuapp.com/users_login/' + $("#password").val() + $("#id_field").val(),
+            url: 'http://localhost:3001/users_login/' + $("#password").val() + $("#id_field").val(), // the url where we want to POST
+            // url: 'https://kvudaweb.herokuapp.com/users_login/' + $("#password").val() + $("#id_field").val(),
             success: function( data, textStatus, jQxhr ){
                 password = $("#password").val();
                 if(data.localeCompare(password)==0){
@@ -135,7 +143,7 @@ function user_login() {
                    
             },
             error: function(errorThrown) { //When the data is incorrect
-                console.log("way")
+                // console.log("way")
                 alert("User dont exist or one or more parameters incorrect");
             }
         })
@@ -146,13 +154,13 @@ function user_login() {
 
 function addQuestion() {
     Id = localStorage.getItem('idUser')
-    console.log("id:" + Id);
+    // console.log("id:" + Id);
     $("#user_form").submit(function(event) {
         if (!$("#user_form").valid()) return;
         $.ajax({
             type: "POST",
-            // url: "http://localhost:3001/question/" + Id,
-            url: "https://kvuda.herokuapp.com/question/" + Id,
+            url: "http://localhost:3001/question/" + Id,
+            // url: "https://kvudaweb.herokuapp.com/question/" + Id,
             contentType: "application/json",
             data: JSON.stringify({
                 genus: $("#genus").val(),
@@ -181,12 +189,12 @@ function addQuestion() {
 
 }
 
-function update_data() {
+function updateData() {
     Id = localStorage.getItem('idUser')
     $.ajax({
             type: "POST",
-            // url: "http://localhost:3001/update_data/" + Id ,
-            url: "https://kvuda.herokuapp.com/update_data/" + Id ,
+            url: "http://localhost:3001/updateData/" + Id ,
+            // url: "https://kvudaweb.herokuapp.com/updateData/" + Id ,
             contentType: "application/json",
             data: JSON.stringify({
                 genus: $("#genus").val(),
@@ -218,7 +226,7 @@ function checkedCheckBox() {
     let newlist = [];
     const checkboxes = document.querySelectorAll(`input[type='checkbox']`);
     result = JSON.parse(localStorage.getItem('result_arr'))
-    console.log("result "+result.find(a=>a.id==="data").value);
+    // console.log("result "+result.find(a=>a.id==="data").value);
     var data = result.find(a=>a.id==="data").value
     newlist.push({
         id: "data",
@@ -230,11 +238,12 @@ function checkedCheckBox() {
         if (checkbox.checked == true)
             values.push(checkbox.id);
         });
-        console.log(values)
+        // console.log(values)
         for (let i = 0; i < values.length; i++) {
             item = values[i].split(",");
             console.log(item);
             word = item[1]
+
                 for (let j = 2; j < item.length; j++) {
                     word += ' '+item[j];      
                 }
@@ -245,12 +254,33 @@ function checkedCheckBox() {
                     newlist.find(a=>a.id===item[0]).value.push(word);
                 }
             }
+            if (newlist.find(a=>a.id==="Your_List") == null ){   
+                newlist.push({id: "Your_List",value:[] }); 
+            } 
             localStorage.setItem('result_arr', JSON.stringify(newlist))
             window.location.href = "output"; 
   }
 
-
 function openPopup() {
+    
+    var item = $("#item").val();
+    addToList(item);
+}
+
+function addToList(item) {
+    var input = document.createElement("input");
+    input.type = "checkbox";
+    input.id = "Your_List,"+item;
+    var ul = document.getElementById("takingList");
+    var li = document.createElement("li");
+    ulLength = ul.getElementsByTagName("li").length;
+    li.appendChild(input);
+    li.appendChild(document.createTextNode(item));
+    ul.insertBefore(li, ul.children[ulLength - 1]);
+    result = JSON.parse(localStorage.getItem('result_arr'))
+    result.find(a=>a.id==="Your_List").value.push(item);
+    localStorage.setItem('result_arr', JSON.stringify(result))
+    Id = localStorage.getItem('idUser')
     const rbs = document.querySelectorAll('input[name="item"]');
     let selectedValue;
     for (const rb of rbs) {
@@ -259,21 +289,30 @@ function openPopup() {
             break;
         }
     }
-    console.log(selectedValue)
-    var item = $("#item").val();
-    console.log(item)
-    addToList(item);
-}
-function addToList(item) {
-    var input = document.createElement("input");
-    input.type = "checkbox";
-    input.id = item;
-    var ul = document.getElementById("takingList");
-    var li = document.createElement("li");
-    ulLength = ul.getElementsByTagName("li").length;
-    li.appendChild(input);
-    li.appendChild(document.createTextNode(item));
-    ul.insertBefore(li, ul.children[ulLength - 1]);
+    // console.log(Id)
+    if(selectedValue.localeCompare("yes")==0){
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3001/update_list_data/" + Id ,
+            // url: "https://kvudaweb.herokuapp.com/update_list_data//" + Id ,
+            contentType: "application/json",
+            data: JSON.stringify({
+                dataItem: $("#item").val(),
+            }),
+            processData: false,
+            encode: true,
+            success: function(data, textStatus, jQxhr) {
+                alert("Your data has been updated in the system");
+                // window.location.href = "home"; 
+            },
+            error: function(jqXhr, textStatus, errorThrown) {
+                alert("failed");
+
+            },
+        });
+        event.preventDefault();
+    }
+
 }
 
 $(document).ready(function() {
@@ -285,16 +324,13 @@ $(document).ready(function() {
         if ($("body").is(".output-page")) {
             let arr = ["London", "15 May", "17 May", "33"];
             let whatToTake = ["glasses", "sun glasses", "Tefilin", "Swimsuit", "credit Card", "suit", "Tanning lotion", "shampoo", "Linen", "Towels"];
-            result = JSON.parse(localStorage.getItem('result_arr'))
-            console.log("hhh*********"+result);
+            result = JSON.parse(localStorage.getItem('result_arr')) 
             initValues();
             function initValues() {
                 $("#destination").html(result[0].value[0]);
                 $("#start_date").html(result[0].value[1]);
                 // $("#end_date").html(result[0].value[1]);
                 $("#temperature").html("temperature in your destination: " + result[0].value[2] + "°");
-
-
                 var list = "<ul id = 'takingList' class='taking-list'>";
                 var checkbox;
                 var id; 
@@ -303,7 +339,9 @@ $(document).ready(function() {
                     item = result[i];
                     title_item = result[i].id;
                     list += "<li class = 'inner-title'>" + title_item + "</li>";
+                    console.log("title_item: "+title_item)
                     for (let j = 0; j < item.value.length; j++) {
+                        // console.log("title_item: "+title_item+" item: "+item.value[j])
                         id="";
                         array = item.value[j].split(' ');
                         for(let l = 0; l<array.length; l++){
@@ -316,13 +354,9 @@ $(document).ready(function() {
                         list += "<li >" + checkbox + item.value[j] + "</li>";
                     }
                 }
-                list += "<li class = 'inner-title'> Your List </li>";
                 list += "<li class = 'add-item'> <i ></i>               </li>";
                 list += "</ul>";
-                // console.log(list);
                 document.getElementById("what-to-take").innerHTML = list;
-
-
             }
         }
     }
@@ -333,8 +367,8 @@ $(document).ready(function() {
             let arr = [];
             $.ajax({
                 type: "GET",
-                // url: "http://localhost:3001/read_question/" + Id ,
-                url: "https://kvuda.herokuapp.com/read_question/" + Id ,
+                url: "http://localhost:3001/read_question/" + Id ,
+                // url: "https://kvudaweb.herokuapp.com/read_question/" + Id ,
                 contentType: "application/json",
                 processData: false,
                 encode: true,
@@ -423,14 +457,14 @@ $(document).ready(function() {
         // Remove Activity From Array
         function removeElement(id) {
             // TODO: Delete All ConsoleLogs, Now they are here for dubugging
-            console.log("before");
-            console.log(activities);
+            // console.log("before");
+            // console.log(activities);
             const index = activities.indexOf(id);
             if (index > -1) {
                 activities.splice(index, 1);
             }
-            console.log("after");
-            console.log(activities);
+            // console.log("after");
+            // console.log(activities);
         }
     }
 })

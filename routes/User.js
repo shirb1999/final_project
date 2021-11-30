@@ -18,28 +18,6 @@ function createFirstList(id_user,permanent_list){
     .catch(e => res.status(500).send(e))
 }
 
-async function list(arr){
-    console.log(arr[0])
-    var user = await User.findOne({ id: arr[0] })
-        var qustion = user.questions;
-        var permanent_list = user.permanent_list;
-        var listTake;
-        if(permanent_list.length == 0){
-            console.log("in permanent list")
-            console.log(qustion)
-            listTake = createFirstList(qustion);
-        }
-        else
-            listTake.push(user.permanent_list);
-
-        // if()
-        
-        
-
-
-
-}
-
 module.exports = {
     // Read - returns list of questions
     read_all_qestion: function(req, res) {
@@ -47,8 +25,7 @@ module.exports = {
         let i = 0;
         for( ; i<9;i++)
             userId+= req.params.id[i];
-        console.log(userId)
-        // let arr = [];
+        // console.log(userId)
         User.findOne({ id: userId }).exec()
             .then(user =>{
                 res.send(user.questions)
@@ -89,7 +66,6 @@ module.exports = {
         var password_user = "";
         var id_user = "";
         let i = 0;
-        console.log("hi");
         for( ; i<8 ;i++)
             password_user+= req.params.password[i];
 
@@ -107,10 +83,10 @@ module.exports = {
         let i = 0;
         for( ; i<9;i++)
             userId+= req.params.id[i];
-        console.log(req.body.message);
+        // console.log(req.body.message);
         User.findOne({ id: userId }).exec()
             .then(user =>{
-                var email = user.email
+                // var email = user.email
                 // var password = user.password
                 var name = user.name
                 // console.log( nam)
@@ -143,11 +119,18 @@ module.exports = {
                     ).catch(e => res.status(400).send(e))
                 }
                 else{
-                    res.status(404).send("user is exist");
+                    res.status(403).send("user is exist");
                 }
 
             }).catch(e => res.status(500).send(e))
         
+    },
+
+    updateOneQestion: function(req, res){
+    User.updateOne({ id: req.params.id }, { $addToSet: { "permanent_list": req.body.dataItem} }).then(x => 
+        res.status(200).send("OK")  
+        ).catch(e => {res.status(400).send(e)})
+
     },
 
     addTrip: function(req, res) {
@@ -159,13 +142,11 @@ module.exports = {
         let whatToTake = [];
         let arr = [];
         var laundry = req.body.laundry;
-        console.log("laundry "+laundry);
         var days = req.body.dayes;
         var amount = days;
-        console.log("days: "+days+" amount: "+amount);
         if(laundry.localeCompare("can_laundry")==0 && (days>5)){
-            amount = Math.floor(days / 5)
-            console.log("after amount: "+amount);
+            if(days % 5 == 0)
+                amount = Math.floor(days / 5)
         }    
         User.findOne({ id: array[0] }).exec()
                 .then(user =>{
@@ -174,9 +155,12 @@ module.exports = {
                 let permanent_list = user.permanent_list;
         geocode(myLocation, (error, {latitude,longitude,location}) => {
             if(error){
-                return console.log(error)
-            
+                console.log(error)
+                res.status(403).send(error);
+                // console.log(location+"vnskjjvbskjbvkjdbajdbc")
             }
+            
+                
             forecast(location, (error, forcData) => {
                 if(error){
                     return console.log(error)
@@ -277,14 +261,6 @@ module.exports = {
         
    } ,
 
-   creatList: function(req, res){
-        
-        var str = req.params["values"]
-        var array = str.split(',');
-        list(array)
-             
-   },
-
    addQuestion: function(req, res) {
     var listTake = [];
     if(req.body.navigation.localeCompare('Yes')==0) {  //if you using with navigation
@@ -319,7 +295,7 @@ module.exports = {
             listTake.push('Prayer Shawl','Tefillin','Kipa','Thithit')
         }
     }
-    // User.updateOne({ id: req.params.id }, {$push:{ "permanent_list": listTake }})
+    
     User.updateOne({ id: req.params.id }, { $push: { "questions":{ $each: [req.body.genus,req.body.navigation,req.body.disability,req.body.hearing, req.body.license, req.body.glasses, req.body.lenses, req.body.drug, req.body.cosher,req.body.religion]}} }).then(question => 
         {createFirstList(req.params.id,listTake)
         res.status(200).send("ok")  
@@ -329,12 +305,6 @@ module.exports = {
 },
 
     updateQestion: function(req, res) {
-
-        var id_user = "";
-        let i = 0;
-        for( ; i<9 ;i++)
-            id_user+= req.params.id[i];
-
             var listTake = [];
             if(req.body.navigation.localeCompare('Yes')==0) {  //if you using with navigation
                 listTake.push('navigation device')
@@ -390,56 +360,6 @@ module.exports = {
             .then(user => res.send(sort_objects_array(user.songs, 'name')))
             .catch(e => res.status(500).send(e))
     },
-    // Deleate - remove user from the list
-    delete_user: function(req, res) {
-        User.deleteOne({ "id": req.params.id })
-            .then(user => res.send(user))
-            .catch(e => res.status(500).send(e))
-    },
-    // Deleate - remove song from the list song
-    delete_user_song: function(req, res) {
-        var userId = "";
-        let i = 0;
-        for( ; i<req.params.id.length-1;i++)
-        userId+= req.params.id[i];
-        var song = req.params.id[i];
-        var isExist = false;
-
-        if (isNaN(userId)) {
-            return res.status(400).send("Bad-Request, (add song, id is invalid)");
-        }
-        // find the relevant user by the id
-        User.findOne({ id: userId }).exec().then(user => {
-            if (user == null) {
-                res.status(404).send("user doesnt exist");
-            } else {
-                // if song = '' --> delete all songs
-                if (song == '') {
-                    user.songs = [];
-                    user.save((err) => {
-                        if (err) {
-                            res.status(400).send(err);
-                        } else { res.status(201).send("saved succesfully"); }
-                    });
-                } else { // else --> check if song exists
-                    for (var s in user.songs) {
-                        if (s == song) {
-                            user.songs.splice(song, 1);
-                            isExist = true;
-                            // save the changes of this user
-                            user.save((err) => {
-                                if (err) {
-                                    res.status(400).send(err);
-                                } else { res.status(201).send("saved succesfully"); }
-                            });
-                            break;
-                        }
-                    }
-                    if (!isExist) res.status(400).send(err);
-                }
-            }
-        }).catch(e => res.status(400).send(e));
-    }
 
 
 }

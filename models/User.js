@@ -45,12 +45,7 @@ var UserSchema = new mongoose.Schema({
         // ref: 'Question',
         // required: true
     }],
-
-    new_travel: [{ //reference to User
-        type: String,
-        // ref: 'Question',
-        // required: true
-    }],
+    
     permanent_list: [{ //reference to User
         type: String,
         // ref: 'Question',
