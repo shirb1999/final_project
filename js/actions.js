@@ -294,7 +294,7 @@ function addToList(item) {
         $.ajax({
             type: "POST",
             // url: "http://localhost:3001/update_list_data/" + Id ,
-            url: "https://kvuda.herokuapp.com/update_list_data//" + Id ,
+            url: "https://kvuda.herokuapp.com/update_list_data/" + Id ,
             contentType: "application/json",
             data: JSON.stringify({
                 dataItem: $("#item").val(),
