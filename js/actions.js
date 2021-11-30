@@ -302,8 +302,6 @@ function addToList(item) {
             processData: false,
             encode: true,
             success: function(data, textStatus, jQxhr) {
-                alert("Your data has been updated in the system");
-                // window.location.href = "home"; 
             },
             error: function(jqXhr, textStatus, errorThrown) {
                 alert("failed");
