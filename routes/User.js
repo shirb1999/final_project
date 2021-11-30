@@ -348,18 +348,7 @@ module.exports = {
 
     },
 
-     // Create - add a new songs
-    create_song: function(req, res) {
-        User.updateOne({ id: req.params.id }, { $addToSet: { "songs": req.body.name} }).then(song => 
-        res.status(200).send(song)  
-        ).catch(e => {res.status(400).send(e)})
-    },
-    // Read - returns list of songs
-    read_song: function(req, res) {
-        User.findOne({ id: req.params.id })
-            .then(user => res.send(sort_objects_array(user.songs, 'name')))
-            .catch(e => res.status(500).send(e))
-    },
+    
 
 
 }

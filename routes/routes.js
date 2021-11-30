@@ -5,10 +5,6 @@ const express = require("express"),
 
 var router = express.Router();
 router.post('/User', UserRoutes.create_user); // create user
-router.post('/User/:id',
-    [
-      check('name', "User name should at least 3 chars").isLength({ min: 3 }),
-    ], UserRoutes.create_song);   //add new User
 router.get('/users/:id', UserRoutes.forget_password);  //Password recovery via email
 router.get('/read_question/:id', UserRoutes.read_all_qestion);  //Go over all the questions for the user
 router.get('/users_login/:password', UserRoutes.user_login);  //Login to an existing user
