@@ -368,7 +368,7 @@ $(document).ready(function() {
             $.ajax({
                 type: "GET",
                 // url: "http://localhost:3001/read_question/" + Id ,
-                url: "https://kvudaweb.herokuapp.com/read_question/" + Id ,
+                url: "https://kvuda.herokuapp.com/read_question/" + Id ,
                 contentType: "application/json",
                 processData: false,
                 encode: true,
