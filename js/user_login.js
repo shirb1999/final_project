@@ -5,8 +5,8 @@ $('#user_form').submit(function (event) {
   // process the form
   $.ajax({
       type: "GET", // define the type of HTTP verb we want to use ("GET" for our form)
-      url: 'http://localhost:3001/users_login/' + $("#password").val() + $("#id_field").val(), // the url where we want to POST
-      // url: 'https://kvudaweb.herokuapp.com/users_login/' + $("#password").val() + $("#id_field").val(),
+      // url: 'http://localhost:3001/users_login/' + $("#password").val() + $("#id_field").val(), // the url where we want to POST
+      url: 'https://kvudaweb.herokuapp.com/users_login/' + $("#password").val() + $("#id_field").val(),
       success: function( data, textStatus, jQxhr ){
           // alert(data);
           // var x = document.getElementById("myDIV"); //Check if the password is equal to the password in the data
